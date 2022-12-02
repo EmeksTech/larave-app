@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,5 @@ Route::get('/', [FrontController::class, 'index']);
 
 Route::get('about', [FrontController::class, 'about'] );
 Route::get('contact', [FrontController::class, 'contact']);
+Route::get('posts', [PostController::class, 'index']);
 
