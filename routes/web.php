@@ -22,4 +22,4 @@ Route::get('/', [FrontController::class, 'index']);
 Route::get('about', [FrontController::class, 'about'] );
 Route::get('contact', [FrontController::class, 'contact']);
 Route::get('posts', [PostController::class, 'index']);
-
+Route::resource('posts', PostController::class);

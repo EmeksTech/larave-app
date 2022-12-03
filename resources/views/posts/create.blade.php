@@ -2,7 +2,7 @@
 
 @section('content')
  <!-- Page Header-->
- <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+ <header class="masthead" style="background-image: url({{asset('assets/img/home-bg.jpg')}})">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
@@ -21,7 +21,8 @@
         <div class="card">
             <div class="card-body shadow">
 
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{route('posts.store')}}" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group mb-3 ">
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" class="form-control">

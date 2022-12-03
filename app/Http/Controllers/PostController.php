@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response
 
 class PostController extends Controller
 {
@@ -25,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -36,7 +37,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post();
+        $post->slug = Str::slug($request->input('title'));
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->image = 'gdjfgkjh';
+
+        $post->save();
+        return redirect()->route('posts.index');
+
+
     }
 
     /**

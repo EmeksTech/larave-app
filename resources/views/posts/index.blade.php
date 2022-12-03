@@ -21,23 +21,44 @@
         <div class="card shadow">
             <div class="card-body ">
 
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Slug</th>
-                            <th>Body</th>
-                            <th>Date</th>
-                            <th>Actions</th>
+                <div class="text-end">
+                    <a href="{{route('posts.create')}}" class="btn btn-primary btn-sm py-3">
+                        <i class="fa fa-plus">
 
-                        </tr>
-                        <tbody>
-                            
-                        </tbody>
-                    </thead>
+                        </i>
+                        Create Post
+                    </a>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Slug</th>
+                                <th>Body</th>
+                                <th>Date</th>
+                                <th>Actions</th>
 
-                </table>
+                            </tr>
+                            <tbody>
+                                @forelse ($posts as $post )
+                                    <td>{{$post->image}}</td>
+                                    <td>{{$post->title}}</td>
+                                    <td>{{$post->slug}}</td>
+                                    <td>{{$post->body}}</td>
+                                    <td>{{$post->created_at}}</td>
+                                    <td> -- </td>
+
+                                @empty
+                                <tr>
+                                    <td colspan="6" class="text-center text-muted">No posts found</td>
+                                </tr>
+
+                                @endforelse
+                            </tbody>
+                        </thead>
+
+                    </table>
+                </div>
 
             </div>
         </div>
