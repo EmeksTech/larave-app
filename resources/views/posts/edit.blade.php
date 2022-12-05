@@ -24,11 +24,11 @@
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-group mb-3 ">
                         <label for="title">Title</label>
-                        <input type="text" name="title" id="title" class="form-control">
+                        <input type="text" name="title" id="title" class="form-control" value="{{$post->title}}">
                     </div>
                     <div class="form-group mb-3">
                         <label for="body">Body</label>
-                        <textarea name="body" id="body" cols="30" rows="10" class="form-control"></textarea>
+                        <textarea name="body" id="body" cols="30" rows="10" class="form-control">{{$post->body}}</textarea>
                     </div>
                     <div class="form-group mb-3">
                         <label for="image">Image</label>

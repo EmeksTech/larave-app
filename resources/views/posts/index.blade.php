@@ -41,12 +41,25 @@
                             </tr>
                             <tbody>
                                 @forelse ($posts as $post )
+                                <tr>
                                     <td>{{$post->image}}</td>
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->slug}}</td>
                                     <td>{{$post->body}}</td>
                                     <td>{{$post->created_at}}</td>
-                                    <td> -- </td>
+                                    <td>
+                                         <a href="{{route('posts.edit', $post->id)}}" class="btn btn-outline-info btn-sm">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <form action="{{route('posts.destroy', $post->id)}}" class="d-inline" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </form>
+                                     </td>
+                                </tr>
 
                                 @empty
                                 <tr>
