@@ -95,6 +95,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+        //TODO: after implementing file uplaod, we need to delete the file too
+        
+        return redirect()->route('posts.index');
     }
 }

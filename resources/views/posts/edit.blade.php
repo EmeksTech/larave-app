@@ -21,7 +21,9 @@
         <div class="card">
             <div class="card-body shadow">
 
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{route('posts.update', $post->id)}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <div class="form-group mb-3 ">
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" class="form-control" value="{{$post->title}}">
