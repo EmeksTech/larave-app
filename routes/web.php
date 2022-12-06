@@ -23,3 +23,7 @@ Route::get('about', [FrontController::class, 'about'] );
 Route::get('contact', [FrontController::class, 'contact']);
 Route::get('posts', [PostController::class, 'index']);
 Route::resource('posts', PostController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -84,7 +84,13 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->update($request->only('title', 'body'));
+
+        // $post->title = $request->input('title');
+        // $post->body = $request->input('body');
+        // $post->save();
+        return redirect()->route('posts.index'); 
     }
 
     /**
@@ -98,7 +104,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->delete();
         //TODO: after implementing file uplaod, we need to delete the file too
-        
+
         return redirect()->route('posts.index');
     }
 }

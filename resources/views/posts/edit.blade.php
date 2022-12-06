@@ -37,7 +37,7 @@
                        <input type="file" name="image" id="image" class="form-control">
                     </div>
 
-                    <button type="submit" class="btn btn-outline-primary w-100">Create Post</button>
+                    <button type="submit" class="btn btn-outline-primary w-100">Update Post</button>
 
                 </form>
             </div>
