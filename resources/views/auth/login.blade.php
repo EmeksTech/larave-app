@@ -5,6 +5,17 @@
 
     <img class="mb-4" src="../assets//bootstrap-logo.svg" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error )
+            <li>{{$error}}</li>
+
+            @endforeach
+        </ul>
+    </div>
+
+    @endif
 
     <div class="form-floating">
       <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
