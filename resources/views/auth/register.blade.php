@@ -1,17 +1,18 @@
 @extends('layouts.auth')
 @section('content')
 
-<form>
+<form action="{{route('register')}}" method="POST">
+  @csrf
     <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Registration</h1>
-
+    <h1 class="h3 mb-3 fw-normal">Create Account</h1>
+    <x-errors/>
     <div class="form-floating">
-        <input type="text" name="name" class="form-control" id="name" placeholder="Fullname">
+        <input value="{{old('name')}}" type="text" name="name" class="form-control" id="name" placeholder="Fullname">
         <label for="name">Full name</label>
       </div>
 
     <div class="form-floating">
-      <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input value="{{old('email')}} type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
