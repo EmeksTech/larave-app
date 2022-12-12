@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+
 
 
 class PostController extends Controller
@@ -17,7 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts = auth()->user()->posts()->paginate();
         return view('posts.index',['posts' => $posts,]);
     }
 
@@ -39,13 +40,37 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post();
-        $post->slug = Str::slug($request->input('title'));
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-        $post->image = 'gdjfgkjh';
+        $request->validate([
+            'title' => ['required', 'unique:posts', 'min:5'],
+            'body' => ['required', 'string', 'min:30'],
+            // 'image' => ['required', 'image', 'mimes:png,jpg,jpeg']
+            'image' => "required|image|mimes:png,jpg,jpeg"
+        ]);
 
-        $post->save();
+        $data = $request->only('title','body');
+        $slug = Str::slug($request->input('title'));
+
+        // $image_dir =
+
+        // dd($image_dir);
+
+        Post::create(
+            array_merge($data, [
+                'slug' => $slug,
+                'user_id' => auth()->user()->id,
+                'image' => $request->file('image')->store('blog_images', 'public')
+            ])
+        );
+
+        // $post = new Post();
+        // $post->slug = Str::slug($request->input('title'));
+        // $post->title = $request->input('title');
+        // $post->body = $request->input('body');
+        // $post->image = 'default.jpg';
+        // $post->save();
+
+
+        session()->flash('success', 'Post created successfully');
         return redirect()->route('posts.index');
 
 
@@ -84,13 +109,21 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'title' => ['required', 'unique:posts', 'min:5'],
+            'body' => ['required', 'string', 'min:30'],
+            // 'image' => ['required', 'image', 'mimes:png,jpg,jpeg']
+            'image' => "nullable|image|mimes:png,jpg,jpeg"
+        ]);
+
         $post = Post::findOrFail($id);
         $post->update($request->only('title', 'body'));
 
         // $post->title = $request->input('title');
         // $post->body = $request->input('body');
         // $post->save();
-        return redirect()->route('posts.index'); 
+        return redirect()->route('posts.index');
     }
 
     /**

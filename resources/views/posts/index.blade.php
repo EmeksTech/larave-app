@@ -20,6 +20,7 @@
     <div class="col-md-10 mx-auto my-5">
         <div class="card shadow">
             <div class="card-body ">
+                <x-alerts />
 
                 <div class="text-end">
                     <a href="{{route('posts.create')}}" class="btn btn-primary btn-sm py-3">
@@ -42,7 +43,9 @@
                             <tbody>
                                 @forelse ($posts as $post )
                                 <tr>
-                                    <td>{{$post->image}}</td>
+                                    <td>
+                                        <img src="{{asset('storage/'.$post->image)}}" alt="" width="100px" height="auto" >
+                                        {{-- {{$post->image}}</td> --}}
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->slug}}</td>
                                     <td>{{$post->body}}</td>
@@ -71,8 +74,10 @@
                         </thead>
 
                     </table>
-                </div>
 
+                    {{$posts->links()}}
+
+                </div>
             </div>
         </div>
     </div>

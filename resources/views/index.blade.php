@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    @foreach ($posts as $post)
         <!-- Page Header-->
         <header class="masthead" style="background-image: url({{asset('assets/img/home-bg.jpg')}})">
             <div class="container position-relative px-4 px-lg-5">
@@ -46,5 +45,4 @@
                 </div>
             </div>
         </div>
-    @endforeach
 @endsection

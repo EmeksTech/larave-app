@@ -10,10 +10,8 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
 
-
-
-<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/auth.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/auth.css')}}">
 
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -77,8 +75,7 @@
   <body class="text-center">
 
 <main class="form-signin w-100 m-auto">
-
- @yield('content')
+  @yield('login')
 </main>
 
 

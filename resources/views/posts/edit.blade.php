@@ -27,14 +27,26 @@
                     <div class="form-group mb-3 ">
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" class="form-control" value="{{$post->title}}">
+                        @error('title') <span style="font-size: 10px" class="text-danger">
+                            {{$message}}
+                            </span>
+                            @enderror
                     </div>
                     <div class="form-group mb-3">
                         <label for="body">Body</label>
                         <textarea name="body" id="body" cols="30" rows="10" class="form-control">{{$post->body}}</textarea>
+                        @error('body') <span style="font-size: 10px" class="text-danger">
+                            {{$message}}
+                            </span>
+                            @enderror
                     </div>
                     <div class="form-group mb-3">
                         <label for="image">Image</label>
                        <input type="file" name="image" id="image" class="form-control">
+                       @error('image') <span style="font-size: 10px" class="text-danger">
+                        {{$message}}
+                        </span>
+                        @enderror
                     </div>
 
                     <button type="submit" class="btn btn-outline-primary w-100">Update Post</button>
