@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -111,14 +112,27 @@ class PostController extends Controller
     {
 
         $request->validate([
-            'title' => ['required', 'unique:posts', 'min:5'],
+            'title' => ['required', 'unique:posts,title,' . $id, 'min:5'],
             'body' => ['required', 'string', 'min:30'],
             // 'image' => ['required', 'image', 'mimes:png,jpg,jpeg']
             'image' => "nullable|image|mimes:png,jpg,jpeg"
         ]);
 
         $post = Post::findOrFail($id);
-        $post->update($request->only('title', 'body'));
+
+        $data = $request->only('title', 'body');
+
+        if ($request->hasFile('image')) {
+            $data = array_merge($data, [
+                'image' => $request->file('image')->store('blog_images', 'public')
+            ]);
+            if (file_exists($file = storage_path('app/public' . $post->image))){
+                unlink($file);
+            }
+        }
+        $post->update($data);
+        session()->flash('success', 'Successfully updated');
+        // $post->update($request->only('title', 'body'));
 
         // $post->title = $request->input('title');
         // $post->body = $request->input('body');

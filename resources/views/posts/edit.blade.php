@@ -21,6 +21,7 @@
         <div class="card">
             <div class="card-body shadow">
 
+                
                 <form action="{{route('posts.update', $post->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
