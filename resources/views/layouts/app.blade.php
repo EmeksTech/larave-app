@@ -41,14 +41,17 @@
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/posts">Posts</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact">Contact</a></li>
                     <li>@auth
-                        </li class= "nav-item">
-                        <form action="{{route('logout')}}" method="POST">
-                        @csrf
-                    <button type="submit" class="nav-link px-lg-3 py-3 py-lg-4">Logout</button></form>
+                        </li class="nav-item">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="nav-link px-lg-3 py-3 py-lg-4">Logout</button>
+                        </form>
                         </li>
-                        @else
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('login')}}">Login</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{route('register')}}">Register</a></li>
+                    @else
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4"
+                                href="{{ route('register') }}">Register</a></li>
                     @endauth
                     </li>
                 </ul>
