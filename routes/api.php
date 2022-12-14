@@ -24,3 +24,4 @@ use Illuminate\Support\Facades\Route;
 // Route::post('/', [PostController::class, 'store'])->name('posts.store');
 
 Route::apiResource('posts', PostController::class)->except('show');
+Route::get('posts/{slug}', [PostController::class, 'show'])->name('posts.show');
