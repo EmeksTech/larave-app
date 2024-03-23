@@ -17,7 +17,7 @@
 
 <div class="container">
 
-    <div class="col-md-6 mx-auto my-5">
+    <div class="col-md-6 mx-auto my-5">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
         <div class="card">
             <div class="card-body shadow">
 
