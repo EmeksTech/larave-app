@@ -74,7 +74,7 @@ class PostController extends Controller
         session()->flash('success', 'Post created successfully');
         return redirect()->route('posts.index');
 
-
+ 
     }
 
     /**

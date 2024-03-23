@@ -43,8 +43,7 @@
                             <tbody>
                                 @forelse ($posts as $post )
                                 <tr>
-                                    <td>
-                                        <img src="{{asset('storage/'.$post->image)}}" alt="" width="100px" height="auto" >
+                                    <td><img src="{{asset('storage/'.$post->image)}}" alt="" width="100px" height="auto" ></td>
                                         {{-- {{$post->image}}</td> --}}
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->slug}}</td>
