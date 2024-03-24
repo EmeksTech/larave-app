@@ -17,3 +17,7 @@ php artisan optimize
 
 echo "Running migrations..."
 php artisan migrate --force
+
+#listing the existing routes
+echo "Running routes listing"
+php artisan route:list
