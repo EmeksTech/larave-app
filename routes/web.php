@@ -19,12 +19,12 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', [FrontController::class, 'index']);
 
-Route::get('about', [FrontController::class, 'about'] );
-Route::get('contact', [FrontController::class, 'contact']);
+Route::get('/about', [FrontController::class, 'about'] );
+Route::get('/contact', [FrontController::class, 'contact']);
 // Route::get('posts', [PostController::class, 'index']);
 
 
-Route::resource('posts', PostController::class)->middleware('auth');
+Route::resource('/posts', PostController::class)->middleware('auth');
 
 // Auth::routes();
 
