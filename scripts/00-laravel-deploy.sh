@@ -19,5 +19,5 @@ echo "Running migrations..."
 php artisan migrate --force
 
 #listing the existing routes
-echo "Running routes listing"
-php artisan route:list
+#echo "Running routes listing"
+#php artisan route:list

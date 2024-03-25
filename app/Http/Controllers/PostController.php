@@ -41,25 +41,28 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+       $formFields = $request->validate([
             'title' => ['required', 'unique:posts', 'min:5'],
-            'body' => ['required', 'string', 'min:30'],
+            'body' => ['required', 'string', 'min:30']
             // 'image' => ['required', 'image', 'mimes:png,jpg,jpeg']
-            'image' => "required|image|mimes:png,jpg,jpeg"
+           // 'image' => "required|image|mimes:png,jpg,jpeg"
         ]);
 
-        $data = $request->only('title','body');
+       // $data = $request->only('title','body');
         $slug = Str::slug($request->input('title'));
 
         // $image_dir =
 
         // dd($image_dir);
+        if($request->hasFile('image')){
+            $formFields['image'] = $request->file('image')->store('blog_images', 'public');
+        };
 
         Post::create(
-            array_merge($data, [
+            array_merge($formFields, [
                 'slug' => $slug,
                 'user_id' => auth()->user()->id,
-                'image' => $request->file('image')->store('blog_images', 'public')
+                //'image' => $request->file('image')->store('blog_images', 'public')
             ])
         );
 
@@ -74,7 +77,7 @@ class PostController extends Controller
         session()->flash('success', 'Post created successfully');
         return redirect()->route('posts.index');
 
- 
+
     }
 
     /**
@@ -83,8 +86,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
+        
         //
     }
 
