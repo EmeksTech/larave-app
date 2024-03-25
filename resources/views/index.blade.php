@@ -22,14 +22,14 @@
 
                     <!-- Post preview-->
                     <div class="post-preview">
-                        <a href="post.html">
+                        <a href="#">
                             <h2 class="post-title">{{$post->title}}</h2>
                             <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
                         </a>
                         <p class="post-meta">
                             Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on September 24, 2022
+                            <a href="#!">{{$post->user->name}}</a>
+                            {{$post->updated_at}}
                         </p>
                     </div>
                     <!-- Divider-->
